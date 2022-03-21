@@ -37,6 +37,14 @@ const updateLoadout = (req, res) => {
 })
 }
 
+const deleteLoadout = (req, res) => {
+    //takes the loadout id from the body and deletes it
+    Loadout.findByIdAndDelete(req.body.id, function (err) {
+      if(err)  return res.status(500).send("something went wrong")
+      res.send("Successful deletion")
+    })
+}
+
 module.exports = {
     getLoadout,
     createLoadout,
