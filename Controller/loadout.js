@@ -26,6 +26,17 @@ const createLoadout = (req, res) => {
     res.status(201).send('Loadout Created')
 }
 
+const updateLoadout = (req, res) => {
+    // res.body.id is the user generated id and the req.body.update can be used to patch certain data and change it
+    Loadout.findByIdAndUpdate(req.body.id,req.body.update,(err, loadout)=>{
+        // error if it doesnt exist
+        if(err) return res.status(404).send('not found')
+        // Otherwise show the loadout
+        res.json(loadout)
+
+})
+}
+
 module.exports = {
     getLoadout,
     createLoadout,
