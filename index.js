@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
 const config = require('./config')
+const LoadoutRouter = require('./Routes/loadout')
 const UserRouter = require('./Routes/user')
 app.use(express.json())
 
@@ -12,6 +13,7 @@ mongoose.connect('mongodb+srv://KellyMenzul:M1ckeyd0g@cluster0.1tsth.mongodb.net
 })
 
 app.use(UserRouter)
+app.use(LoadoutRouter)
 
 
 app.listen(3000, () => {
