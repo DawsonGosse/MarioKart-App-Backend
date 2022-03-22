@@ -1,14 +1,13 @@
 const Loadout = require('../models/loadout')
 
 const getLoadout = (req, res) => {
-    Loadout.find({}, (err, data) => {
+    Loadout.find(req.body.id, (err, data) => {
         if(err) return res.status(500).send("Something went wrong in the database")
         res.json(data)
     })
 }
 
 // creates loadout
-
 const createLoadout = (req, res) => {
     // copies(clones) loadout schema
     const loadout = new Loadout()
@@ -17,6 +16,7 @@ const createLoadout = (req, res) => {
     loadout.kart = req.body.kart
     loadout.wheels = req.body.wheels
     loadout.glider = req.body.glider
+    loadout.token = req.query.token
     
     // saves the loudout
     loadout.save((err, data) => {

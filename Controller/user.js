@@ -21,7 +21,7 @@ const login = (req,res)=>{
         if(user.comparePassword(req.body.password)){
 
             const token = jwt.sign({id:user._id}, 'thisismysecret');
-            res.send(`Hello! ${user.username}`)
+            res.send(`Hello! ${user.username}, ${token}`)
         }else{
             res.send("Could not login")
         }

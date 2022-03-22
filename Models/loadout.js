@@ -8,6 +8,7 @@ const LoadoutSchema = new Schema({
     kart: {type: String, required: true},
     wheels: {type: String, required: true},
     glider: {type: String, required: true},
+    token: {type: String, required: true}
 })
 
 

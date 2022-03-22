@@ -7,10 +7,10 @@ const {getLoadout, createLoadout, deleteLoadout, updateLoadout} = require('../Co
 
 router.get('/', authoriseUser, getLoadout)
 
-router.post('/new', createLoadout)
+router.post('/new', authoriseUser, createLoadout)
 
-router.delete('/delete', deleteLoadout)
+router.delete('/delete', authoriseUser, deleteLoadout)
 
-router.patch('/update', updateLoadout)
+router.patch('/update', authoriseUser, updateLoadout)
 
 module.exports = router
